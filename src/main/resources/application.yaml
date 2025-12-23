@@ -1,0 +1,28 @@
+spring:
+  application:
+    name: trapeza-api
+
+  # Database Configuration
+  datasource:
+    url: jdbc:mysql://localhost:3306/trapeza_db?createDatabaseIfNotExist=true
+    username: root
+    password: 
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  # JPA / Hibernate
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+
+# Server
+server:
+  port: 8080
+
+# Swagger UI path
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html

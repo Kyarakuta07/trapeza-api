@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Trapeza Bank - Dashboard</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+    <div class="app-container">
+
+        <!-- Header -->
+        <header class="header">
+            <div class="logo-section">
+                <div class="logo-icon">🏦</div>
+                <div class="logo-text">
+                    <span class="logo-title">Trapeza Bank</span>
+                    <span class="logo-subtitle" id="pageSubtitle">Digital Banking</span>
+                </div>
+            </div>
+            <div class="header-right">
+                <div class="notification-btn" onclick="toggleNotifications()">
+                    🔔
+                    <span class="notification-badge" id="notificationBadge" style="display:none;">0</span>
+                </div>
+                <div class="user-avatar" id="headerAvatar">?</div>
+            </div>
+            <!-- Notification Dropdown -->
+            <div class="notification-dropdown" id="notificationDropdown" style="display:none;">
+                <div class="notification-header">
+                    <span>Notifikasi</span>
+                    <button onclick="markAllNotificationsRead()">Tandai Semua Dibaca</button>
+                </div>
+                <div class="notification-list" id="notificationList">
+                    <p class="notification-empty">Tidak ada notifikasi</p>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content - Pages will be loaded here dynamically -->
+        <main class="main-content" id="pageContainer">
+            <!-- Loading state -->
+            <div class="loading-state">
+                <div class="spinner"></div>
+                <p>Memuat...</p>
+            </div>
+        </main>
+
+        <!-- Bottom Navigation -->
+        <nav class="bottom-nav">
+            <div class="nav-item active" onclick="loadPage('home')" id="navHome">
+                <span class="nav-icon">🏠</span>
+                <span class="nav-label">Home</span>
+            </div>
+            <div class="nav-item" onclick="loadPage('wallet')" id="navWallet">
+                <span class="nav-icon">💳</span>
+                <span class="nav-label">Wallet</span>
+            </div>
+            <div class="nav-item" onclick="loadPage('history')" id="navHistory">
+                <span class="nav-icon">📜</span>
+                <span class="nav-label">History</span>
+            </div>
+            <div class="nav-item" onclick="loadPage('profile')" id="navProfile">
+                <span class="nav-icon">👤</span>
+                <span class="nav-label">Profile</span>
+            </div>
+        </nav>
+
+    </div>
+
+    <!-- JavaScript -->
+    <script src="js/dashboard.js"></script>
+</body>
+
+</html>

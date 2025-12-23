@@ -1,0 +1,104 @@
+<!-- ==================== HOME PAGE ==================== -->
+<!-- File: pages/home.html -->
+<!-- Description: Main dashboard with balance card, quick actions, and forms -->
+
+<!-- Balance Card -->
+<div class="balance-card">
+    <div class="balance-header">
+        <span>💰</span>
+        <span class="balance-label">Saldo Tersedia</span>
+    </div>
+    <div class="balance-amount-container">
+        <span class="currency-symbol">Rp</span>
+        <span class="balance-amount" id="balanceDisplay">0</span>
+    </div>
+    <div class="user-info-card">
+        <div class="user-info-avatar" id="userAvatar">?</div>
+        <div class="user-info-details">
+            <div class="user-info-name" id="userName">Guest User</div>
+            <div class="user-info-status">
+                <span class="status-dot"></span>
+                <span id="userStatus">Belum Login</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Quick Actions -->
+<div class="section-header">
+    <h2 class="section-title">Menu Cepat</h2>
+</div>
+<div class="quick-actions">
+    <div class="action-btn" onclick="toggleForm('formBalance')" id="btnBalance">
+        <div class="action-icon">💳</div>
+        <div class="action-label">Cek Saldo</div>
+    </div>
+    <div class="action-btn" onclick="toggleForm('formTopup')" id="btnTopup">
+        <div class="action-icon">➕</div>
+        <div class="action-label">Top Up</div>
+    </div>
+    <div class="action-btn" onclick="toggleForm('formTransfer')" id="btnTransfer">
+        <div class="action-icon">💸</div>
+        <div class="action-label">Transfer</div>
+    </div>
+</div>
+
+<!-- Check Balance Form -->
+<div class="form-section" id="formBalance">
+    <h3 class="form-title">💳 Cek Saldo User Lain</h3>
+    <div class="form-group">
+        <label class="form-label">Username</label>
+        <input type="text" class="form-input" id="checkUsername" placeholder="Masukkan username">
+    </div>
+    <button class="btn-primary" onclick="checkOtherBalance()">
+        Cek Saldo
+    </button>
+    <button class="btn-secondary" onclick="refreshMyBalance()">
+        🔄 Refresh Saldo Saya
+    </button>
+    <div class="result-message" id="balanceResult"></div>
+</div>
+
+<!-- Top Up Form -->
+<div class="form-section" id="formTopup">
+    <h3 class="form-title">➕ Top Up Saldo</h3>
+    <div class="form-group">
+        <label class="form-label">Jumlah Top Up (GOLD)</label>
+        <input type="number" class="form-input" id="topupAmount" placeholder="100">
+    </div>
+    <button class="btn-primary" onclick="doTopup()">
+        Top Up Sekarang
+    </button>
+    <div class="result-message" id="topupResult"></div>
+</div>
+
+<!-- Transfer Form -->
+<div class="form-section" id="formTransfer">
+    <h3 class="form-title">💸 Transfer ke User Lain</h3>
+    <div class="form-group">
+        <label class="form-label">Username Tujuan</label>
+        <input type="text" class="form-input" id="transferTo" placeholder="Username penerima">
+    </div>
+    <div class="form-group">
+        <label class="form-label">Jumlah (GOLD)</label>
+        <input type="number" class="form-input" id="transferAmount" placeholder="100">
+    </div>
+    <button class="btn-primary" onclick="doTransfer()">
+        Kirim Transfer
+    </button>
+    <div class="result-message" id="transferResult"></div>
+</div>
+
+<!-- Recent Transactions -->
+<div class="history-card" id="recentTransactionsCard">
+    <div class="history-header">
+        <h3 class="history-title">Transaksi Terakhir</h3>
+        <span class="history-see-all" onclick="loadPage('history')">Lihat Semua →</span>
+    </div>
+    <div id="recentTransactions">
+        <div class="loading-state">
+            <div class="spinner spinner-small"></div>
+            <p>Memuat transaksi...</p>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Trapeza Bank - Login</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/login.css">
+</head>
+
+<body>
+    <div class="app-container">
+        <div class="login-container">
+
+            <!-- Header -->
+            <div class="login-header">
+                <div class="login-logo">🏦</div>
+                <h1 class="login-title">Trapeza Bank</h1>
+                <p class="login-subtitle">Digital Banking Experience</p>
+            </div>
+
+            <!-- Login Form -->
+            <div class="login-form">
+                <!-- Tabs -->
+                <div class="login-tabs">
+                    <div class="login-tab active" onclick="switchTab('login')">Masuk</div>
+                    <div class="login-tab" onclick="switchTab('register')">Daftar</div>
+                </div>
+
+                <!-- Login Panel -->
+                <div class="form-panel active" id="panelLogin">
+                    <div class="form-group">
+                        <label class="form-label">Username</label>
+                        <input type="text" class="form-input" id="loginUsername" placeholder="Masukkan username">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Password</label>
+                        <input type="password" class="form-input" id="loginPassword" placeholder="Masukkan password">
+                    </div>
+                    <button class="btn-primary" onclick="doLogin()" id="btnLogin">
+                        Masuk
+                    </button>
+                    <div class="result-message" id="loginResult"></div>
+                </div>
+
+                <!-- Register Panel -->
+                <div class="form-panel" id="panelRegister">
+                    <div class="form-group">
+                        <label class="form-label">Username</label>
+                        <input type="text" class="form-input" id="regUsername" placeholder="Pilih username unik">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Nama Lengkap</label>
+                        <input type="text" class="form-input" id="regNama" placeholder="Nama lengkap Anda">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Password</label>
+                        <input type="password" class="form-input" id="regPassword" placeholder="Buat password">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Konfirmasi Password</label>
+                        <input type="password" class="form-input" id="regPasswordConfirm" placeholder="Ulangi password">
+                    </div>
+                    <button class="btn-primary" onclick="doRegister()" id="btnRegister">
+                        Daftar Sekarang
+                    </button>
+                    <div class="result-message" id="registerResult"></div>
+                </div>
+            </div>
+
+            <!-- Footer -->
+            <div class="login-footer">
+                <p>Trapeza Bank API v1.0.0</p>
+                <div class="api-link" onclick="showSwagger()">
+                    <span>📚</span>
+                    <span>Lihat API Documentation</span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="js/auth.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,172 @@
+<!-- ==================== WALLET PAGE ==================== -->
+<!-- File: pages/wallet.html -->
+<!-- Description: Wallet management with balance cards and actions -->
+
+<h1 class="page-title">💳 Wallet</h1>
+
+<!-- Main Balance Card -->
+<div class="wallet-card">
+    <div class="wallet-card-title">Total Saldo</div>
+    <div class="wallet-card-value" id="walletBalance">Rp 0</div>
+    <div class="wallet-card-label">Tersedia untuk digunakan</div>
+</div>
+
+<!-- Wallet Actions -->
+<div class="wallet-actions">
+    <div class="wallet-action" onclick="toggleForm('formWalletBalance')">
+        <div class="wallet-action-icon">💳</div>
+        <div class="wallet-action-label">Cek</div>
+    </div>
+    <div class="wallet-action" onclick="toggleForm('formWalletTopup')">
+        <div class="wallet-action-icon">➕</div>
+        <div class="wallet-action-label">Top Up</div>
+    </div>
+    <div class="wallet-action" onclick="toggleForm('formWalletTransfer')">
+        <div class="wallet-action-icon">📤</div>
+        <div class="wallet-action-label">Kirim</div>
+    </div>
+    <div class="wallet-action" onclick="toggleForm('formWalletWithdraw')">
+        <div class="wallet-action-icon">🏧</div>
+        <div class="wallet-action-label">Tarik</div>
+    </div>
+</div>
+
+<!-- Check Balance Form -->
+<div class="form-section" id="formWalletBalance">
+    <h3 class="form-title">💳 Cek Saldo User Lain</h3>
+    <div class="form-group">
+        <label class="form-label">Username</label>
+        <input type="text" class="form-input" id="walletCheckUsername" placeholder="Masukkan username">
+    </div>
+    <button class="btn-primary" onclick="walletCheckBalance()">
+        Cek Saldo
+    </button>
+    <button class="btn-secondary" onclick="refreshMyBalance()">
+        🔄 Refresh Saldo Saya
+    </button>
+    <div class="result-message" id="walletBalanceResult"></div>
+</div>
+
+<!-- Top Up Form -->
+<div class="form-section" id="formWalletTopup">
+    <h3 class="form-title">➕ Top Up Saldo</h3>
+    <div class="form-group">
+        <label class="form-label">Jumlah Top Up (GOLD)</label>
+        <input type="number" class="form-input" id="walletTopupAmount" placeholder="100">
+    </div>
+    <button class="btn-primary" onclick="walletDoTopup()">
+        Top Up Sekarang
+    </button>
+    <div class="result-message" id="walletTopupResult"></div>
+</div>
+
+<!-- Transfer Form -->
+<div class="form-section" id="formWalletTransfer">
+    <h3 class="form-title">📤 Transfer ke User Lain</h3>
+    <div class="form-group">
+        <label class="form-label">Username Tujuan</label>
+        <input type="text" class="form-input" id="walletTransferTo" placeholder="Username penerima">
+    </div>
+    <div class="form-group">
+        <label class="form-label">Jumlah (GOLD)</label>
+        <input type="number" class="form-input" id="walletTransferAmount" placeholder="100">
+    </div>
+    <button class="btn-primary" onclick="walletDoTransfer()">
+        Kirim Transfer
+    </button>
+    <div class="result-message" id="walletTransferResult"></div>
+</div>
+
+<!-- Withdraw Form -->
+<div class="form-section" id="formWalletWithdraw">
+    <h3 class="form-title">🏧 Tarik Saldo</h3>
+    <div class="form-group">
+        <label class="form-label">Jumlah Tarik (GOLD)</label>
+        <input type="number" class="form-input" id="walletWithdrawAmount" placeholder="100">
+    </div>
+    <button class="btn-primary" onclick="walletDoWithdraw()">
+        Tarik Sekarang
+    </button>
+    <div class="result-message" id="walletWithdrawResult"></div>
+</div>
+
+<!-- Accounts Section -->
+<div class="section-header">
+    <h2 class="section-title">🏦 Rekening Saya</h2>
+    <div class="section-buttons">
+        <button class="btn-small btn-deposit" onclick="toggleForm('formAccountDeposit')">💰 Setor</button>
+        <button class="btn-small btn-withdraw" onclick="toggleForm('formAccountWithdraw')">📤 Tarik</button>
+        <button class="btn-small" onclick="toggleForm('formCreateAccount')">+ Baru</button>
+    </div>
+</div>
+
+<!-- Accounts List -->
+<div class="accounts-list" id="accountsList">
+    <p class="loading-state">Memuat rekening...</p>
+</div>
+
+<!-- Create Account Form -->
+<div class="form-section" id="formCreateAccount">
+    <h3 class="form-title">🏦 Buat Rekening Baru</h3>
+    <div class="form-group">
+        <label class="form-label">Nama Rekening</label>
+        <input type="text" class="form-input" id="newAccountName" placeholder="Contoh: Dana Liburan">
+    </div>
+    <div class="form-group">
+        <label class="form-label">Jenis Rekening</label>
+        <select class="form-input" id="newAccountType">
+            <option value="SAVINGS">Tabungan</option>
+            <option value="CHECKING">Giro</option>
+            <option value="DEPOSIT">Deposito</option>
+        </select>
+    </div>
+    <button class="btn-primary" onclick="createNewAccount()">
+        Buat Rekening
+    </button>
+    <div class="result-message" id="createAccountResult"></div>
+</div>
+
+<!-- Deposit to Account Form -->
+<div class="form-section" id="formAccountDeposit">
+    <h3 class="form-title">💰 Setor ke Rekening</h3>
+    <div class="form-group">
+        <label class="form-label">Pilih Rekening</label>
+        <select class="form-input" id="depositAccountId">
+            <option value="">-- Pilih Rekening --</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label class="form-label">Jumlah (GOLD)</label>
+        <input type="number" class="form-input" id="depositAmount" placeholder="100">
+    </div>
+    <button class="btn-primary" onclick="doAccountDeposit()">
+        Setor Sekarang
+    </button>
+    <div class="result-message" id="depositResult"></div>
+</div>
+
+<!-- Withdraw from Account Form -->
+<div class="form-section" id="formAccountWithdraw">
+    <h3 class="form-title">📤 Tarik dari Rekening</h3>
+    <div class="form-group">
+        <label class="form-label">Pilih Rekening</label>
+        <select class="form-input" id="withdrawAccountId">
+            <option value="">-- Pilih Rekening --</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label class="form-label">Jumlah (GOLD)</label>
+        <input type="number" class="form-input" id="withdrawAmount" placeholder="100">
+    </div>
+    <button class="btn-primary" onclick="doAccountWithdraw()">
+        Tarik Sekarang
+    </button>
+    <div class="result-message" id="withdrawAccountResult"></div>
+</div>
+
+<!-- Gold Card -->
+<div class="wallet-card wallet-card-gold">
+    <div class="wallet-card-title">🪙 Gold Balance</div>
+    <div class="wallet-card-value" id="goldBalance">0 GOLD</div>
+    <div class="wallet-card-label">1 GOLD = Rp 1,000</div>
+</div>

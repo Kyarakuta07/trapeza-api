@@ -1,0 +1,28 @@
+<!-- ==================== HISTORY PAGE ==================== -->
+<!-- File: pages/history.html -->
+<!-- Description: Transaction history loaded from database -->
+
+<h1 class="page-title">📜 Riwayat</h1>
+
+<!-- Filter Tabs -->
+<div class="filter-tabs">
+    <div class="filter-tab active" onclick="filterHistory('all')">Semua</div>
+    <div class="filter-tab" onclick="filterHistory('income')">Masuk</div>
+    <div class="filter-tab" onclick="filterHistory('expense')">Keluar</div>
+</div>
+
+<!-- Transaction List -->
+<div class="history-card" id="historyContainer">
+    <div class="loading-state">
+        <div class="spinner spinner-small"></div>
+        <p>Memuat riwayat...</p>
+    </div>
+</div>
+
+<!-- Empty State (hidden by default) -->
+<div class="history-card" id="emptyState" style="display: none;">
+    <div class="empty-state">
+        <p class="empty-state-icon">📭</p>
+        <p class="empty-state-text">Belum ada transaksi</p>
+    </div>
+</div>

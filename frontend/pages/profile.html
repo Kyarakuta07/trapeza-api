@@ -1,0 +1,64 @@
+<!-- ==================== PROFILE PAGE ==================== -->
+<!-- File: pages/profile.html -->
+<!-- Description: User profile with settings menu -->
+
+<div class="profile-header">
+    <div class="profile-avatar-large" id="profileAvatar">?</div>
+    <div class="profile-name" id="profileName">Guest User</div>
+    <div class="profile-username" id="profileUsername">@guest</div>
+</div>
+
+<div class="profile-menu">
+    <div class="profile-menu-item" onclick="showForm('register'); navigateTo('home');">
+        <span class="profile-menu-icon">👤</span>
+        <div class="profile-menu-text">
+            <div class="profile-menu-title">Daftar / Masuk</div>
+            <div class="profile-menu-subtitle">Kelola akun Anda</div>
+        </div>
+        <span class="profile-menu-arrow">›</span>
+    </div>
+    <div class="profile-menu-item" onclick="showSwagger()">
+        <span class="profile-menu-icon">📚</span>
+        <div class="profile-menu-text">
+            <div class="profile-menu-title">API Documentation</div>
+            <div class="profile-menu-subtitle">Swagger UI</div>
+        </div>
+        <span class="profile-menu-arrow">›</span>
+    </div>
+    <div class="profile-menu-item">
+        <span class="profile-menu-icon">⚙️</span>
+        <div class="profile-menu-text">
+            <div class="profile-menu-title">Pengaturan</div>
+            <div class="profile-menu-subtitle">Notifikasi, keamanan</div>
+        </div>
+        <span class="profile-menu-arrow">›</span>
+    </div>
+    <div class="profile-menu-item">
+        <span class="profile-menu-icon">🎨</span>
+        <div class="profile-menu-text">
+            <div class="profile-menu-title">Tampilan</div>
+            <div class="profile-menu-subtitle">Tema, bahasa</div>
+        </div>
+        <span class="profile-menu-arrow">›</span>
+    </div>
+    <div class="profile-menu-item">
+        <span class="profile-menu-icon">❓</span>
+        <div class="profile-menu-text">
+            <div class="profile-menu-title">Bantuan</div>
+            <div class="profile-menu-subtitle">FAQ, hubungi kami</div>
+        </div>
+        <span class="profile-menu-arrow">›</span>
+    </div>
+    <div class="profile-menu-item">
+        <span class="profile-menu-icon">ℹ️</span>
+        <div class="profile-menu-text">
+            <div class="profile-menu-title">Tentang Trapeza</div>
+            <div class="profile-menu-subtitle">Versi 1.0.0</div>
+        </div>
+        <span class="profile-menu-arrow">›</span>
+    </div>
+</div>
+
+<button class="btn-secondary btn-logout" onclick="logout()">
+    🚪 Keluar
+</button>
